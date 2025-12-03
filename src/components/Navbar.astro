@@ -1,0 +1,45 @@
+---
+import { getPagePath, getPages } from "../lib/path";
+import logger from "../lib/logging";
+
+const links = [
+	{
+		label: "Home",
+		href: "/",
+	},
+	{
+		label: "Blog",
+		href: "/blog",
+	},
+	{
+		label: "Test",
+		href: "/test",
+	},
+	{
+		label: "Home",
+		href: "/",
+	},
+	{
+		label: "Home",
+		href: "/",
+	},
+	{
+		label: "Home",
+		href: "/",
+	},
+];
+---
+
+<nav class="container mx-auto">
+	<ul class="flex flex-col justify-between gap-2 text-center sm:flex-row">
+		{
+			links.map((link) => (
+				<li class="grow">
+					<a href={link.href} class="block">
+						{link.label}
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</nav>

@@ -1,0 +1,55 @@
+---
+import NavbarAuth from './auth/NavbarAuth.svelte';
+export const prerender = false;
+
+const links = [
+	{
+		label: 'Home',
+		href: '/',
+	},
+	{
+		label: 'Blog',
+		href: '/blog',
+	},
+];
+const authLinks = [
+	{
+		label: 'Login',
+		href: '/login',
+	},
+	{
+		label: 'Regsiter',
+		href: '/register',
+	},
+];
+---
+
+<nav class="container mx-auto h-10">
+	<div class="flex h-full justify-between">
+		<ul class="flex flex-col justify-between gap-2 text-center sm:flex-row">
+			{
+				links.map((link) => (
+					<li class="flex-1">
+						<a href={link.href} class="grid h-full place-items-center">
+							<span>{link.label}</span>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+
+		<ul class="flex h-full">
+			<li class="h-full">
+				<NavbarAuth client:only>
+					{
+						authLinks.map((link) => (
+							<a href={link.href} class="grid h-full place-items-center">
+								<span>{link.label}</span>
+							</a>
+						))
+					}
+				</NavbarAuth>
+			</li>
+		</ul>
+	</div>
+</nav>

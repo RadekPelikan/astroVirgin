@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  pocketbase:
+    build:
+      context: .
+      args:
+        - VERSION=0.22.21
+    container_name: pocketbase-dev
+    environment:
+      PB_HOST: 0.0.0.0
+      PB_PORT: 8090
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./db/pb_data:/pb_data
+      - ./db/pb_public:/pb_public
+      - ./db/pb_hooks:/pb_hooks
+    command: ["--dev"]

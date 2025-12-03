@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  astro-virgin-app:
+    container_name: AstroVirgin.App
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    image: astro-virgin/app
+    environment:
+      HOST: 0.0.0.0
+      PORT: 4321
+    ports:
+      - "4321:4321"
+    restart: unless-stopped
+
+  pocketbase:
+    image: ghcr.io/muchobien/pocketbase:latest
+    container_name: pocketbase
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./db/pb_data:/pb_data

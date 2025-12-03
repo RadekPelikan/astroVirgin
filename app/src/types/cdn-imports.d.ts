@@ -1,0 +1,1 @@
+declare module "https://cdnjs.cloudflare.com/ajax/libs/pocketbase/0.20.0/pocketbase.es.mjs";

@@ -1,46 +1,34 @@
-# Astro Starter Kit: Basics
+# AstroVirgin project
 
-```sh
-bun create astro@latest -- --template basics
-```
+A demo project for learning [Astro.build](https://astro.build/)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-## 🚀 Project Structure
+## Development
 
-Inside of your Astro project, you'll see the following folders and files:
+### 1. Setup pocketbase
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+> Download [pocketbase](https://pocketbase.io/docs/) <br/>
+> Unzip pocketbase zip and put the executable in [db](./db) folder
+> Start pocketbase server
+> ```sh
+> ./db/pocketbase serve 
+> ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### 2. Run astro dev server
 
-## 🧞 Commands
+> Change to [app](./app) folder
+> ```sh
+> cd app
+> ```
+> [Download bun](https://bun.com/docs/installation) if you don't have bun in shell
+> Download npm dependencies
+> ```sh
+> bun ci
+> ```
+> > [Read here for explanation](https://github.com/oven-sh/bun/issues/5283)
+>
+> Run db server
+> ```sh
+> bun dev
+> ```
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

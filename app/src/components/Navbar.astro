@@ -18,7 +18,7 @@ export const prerender = false;
 			}
 		</ul>
 
-		<NavbarAuth client:only>
+		<NavbarAuth client:load>
 			{
 				authLinks.map((link) => (
 					<a href={link.href} class="grid h-full place-items-center">

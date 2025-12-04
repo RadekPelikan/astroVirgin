@@ -1,0 +1,34 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '../../layouts/Layout.astro';
+import PocketBase, { ClientResponseError } from 'pocketbase';
+import type { TypedPocketBase, UsersResponse } from '../../types/pocketbase-types.generated';
+import { unknown } from 'astro:schema';
+export const prerender = false;
+
+const pb = new PocketBase('http://127.0.0.1:8090') as TypedPocketBase;
+
+const { id } = Astro.params;
+
+type PocketbaseResult<T> = {
+  result: T,
+  error: ClientResponseError
+}
+
+const record = await pb.collection('users').getOne<UsersResponse>(id as string)
+.then(e => ({ result: e})) 
+.catch(e => ({ error: e})) as PocketbaseResult<UsersResponse>
+
+
+---
+
+<Layout>
+	  <h1>Profile 
+  
+  {
+    record?.result ? record.result.id : "not found"
+  }    
+  
+  </h1>
+  
+</Layout>

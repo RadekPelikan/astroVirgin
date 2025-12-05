@@ -4,7 +4,6 @@
 
 	let validationErrors = $state<string[]>([]);
 	// $inspect(validationErrors);
-	console.log(pb.authStore.record?.id);
 
 	const onSubmitHandler = async (e: SubmitEvent) => {
 		e.preventDefault(); // prevent page reload
@@ -14,9 +13,16 @@
 		const email = data.get('email') as string;
 		const password = data.get('password') as string;
 
+
 		pb.collection('users')
 			.authWithPassword(email, password)
 			.then((data) => {
+				document.cookie = pb.authStore.exportToCookie({
+					domain: window.location.hostname,
+					httpOnly: false,
+					secure: true,
+					sameSite: 'Strict',
+				});
 				window.location.href = '/';
 			})
 			.catch((err) => {

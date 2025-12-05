@@ -1,0 +1,43 @@
+---
+import NavbarAuth from '../auth/NavbarAuth.svelte';
+import { links, authLinks } from '../../config/navbar';
+import { isPocketBaseTokenValid } from '../../lib/auth';
+import BaseNavbar from './Base.astro';
+
+let isValid = await isPocketBaseTokenValid(Astro);
+---
+
+<BaseNavbar>
+	<ul class="flex h-full flex-col justify-between gap-2 text-center sm:flex-row">
+		{
+			links.map((link) => (
+				<li class="flex-1">
+					<a href={link.href} class="grid h-full place-items-center">
+						<span>{link.label}</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+	{
+		isValid ? (
+			<NavbarAuth client:load>
+				{authLinks.map((link) => (
+					<a href={link.href} class="grid h-full place-items-center">
+						<span>{link.label}</span>
+					</a>
+				))}
+			</NavbarAuth>
+		) : (
+			<ul class="grid gap-2 sm:flex sm:h-full">
+				{authLinks.map((link) => (
+					<li class="grid h-full sm:flex">
+						<a href={link.href} class="grid h-full place-items-center">
+							<span>{link.label}</span>
+						</a>
+					</li>
+				))}
+			</ul>
+		)
+	}
+</BaseNavbar>

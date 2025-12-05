@@ -4,7 +4,6 @@ import Layout from '../../layouts/Layout.astro';
 import PocketBase, { ClientResponseError } from 'pocketbase';
 import type { TypedPocketBase, UsersResponse } from '../../types/pocketbase-types.generated';
 import { unknown } from 'astro:schema';
-export const prerender = false;
 
 const pb = new PocketBase('http://127.0.0.1:8090') as TypedPocketBase;
 
